@@ -1,6 +1,7 @@
 [%- SET project = report.project -%]
 [%- USE Number.Format -%]
 [%- odd_even.reset() -%]
+
 <table class="properties boxed">
 <thead>
 <tr>
@@ -124,10 +125,12 @@
         </span>
         [%- IF !found_first_failure && test.failed %]<a name="first_failure"></a>[% found_first_failure = 1 -%]
         [%- END -%]
-        <a class="testfile_label" href="[% url_prefix %]/app/projects/test_file_history/[% project.id %]/[% test.test_file %]">
-          <span class="filename[% IF test.failed %] fail[% END %]">[% test.label | html %]</span>
-        </a>
-        [% IF test.is_muted %]<small><em>(muted until [% test.mute_until %])</em></small>[% END %]
+        <span class="filename[% IF test.failed %] fail[% END %]">
+            <a class="testfile_label" href="[% url_prefix %][% app_prefix %]/test_file_history/[% project.id %]/[% test.test_file %]">
+             [% test.label | html %]
+            </a>
+           [% IF test.is_muted %]<small><em>(muted until [% test.mute_until %])</em></small>[% END %]
+        </span>
       </td>
       <td width="8%" class="x [% IF test.all_skipped %]skip[% ELSIF test.failed %]fail[% ELSE %]ok[% END %]">
         <a 
