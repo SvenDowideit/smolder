@@ -12,6 +12,7 @@ use CGI::Cookie;
 # This has nice output, but can't get it to work more than once... - JS
 # BEGIN { $ENV{CGI_APP_DEBUG} = 1 ; } use CGI::Application::Plugin::DebugScreen;
 use Smolder;
+use Smolder::AuthInfo;
 use Smolder::Util;
 use Smolder::Conf qw(ErrorsToScreen HostName LogFile LogLevel TemplateDir);
 use Smolder::DB::Developer;
